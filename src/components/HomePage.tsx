@@ -8,6 +8,7 @@ const HomePage = () => {
   return (
     <div>
       <h1>Study Lists</h1>
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <ul>
         {studyLists.map((list, index) => (
           <li key={index}>{list}</li>
