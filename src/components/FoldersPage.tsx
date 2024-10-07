@@ -1,25 +1,42 @@
 // components/FoldersPage.js
 import React from "react";
+import Header from "./Header";
 
 const FoldersPage = () => {
   const folders = [
-    { name: "Math Folder", pages: ["Algebra", "Geometry"] },
-    { name: "Science Folder", pages: ["Physics", "Chemistry"] },
+    "Math Folder",
+    "Science Folder",
+    "History Folder",
+    "English Folder",
   ];
 
+  const handleSearch = (query) => {
+    console.log(`Search for folder: ${query}`);
+  };
+
+  const handleNew = () => {
+    console.log("Create new folder");
+  };
+
+  const handleFilter = () => {
+    console.log("Filter folders by: recent or title");
+  };
+
   return (
-    <div>
-      <h1>Folders</h1>
-      {folders.map((folder, index) => (
-        <div key={index}>
-          <h2>{folder.name}</h2>
-          <ul>
-            {folder.pages.map((page, pageIndex) => (
-              <li key={pageIndex}>{page}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+    <div className="flex-grow">
+      <Header
+        title="Folders"
+        onSearch={handleSearch}
+        onNew={handleNew}
+        onFilter={handleFilter}
+      />
+      <div className="grid grid-cols-2 gap-4 p-4 lg:grid-cols-3">
+        {folders.map((folder, index) => (
+          <div key={index} className="bg-gray-100 rounded-lg p-4 shadow">
+            {folder}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
